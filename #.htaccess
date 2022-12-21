@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{SERVER_NAME} =vovagutsalo.ru [OR]
+RewriteCond %{SERVER_NAME} =www.vovagutsalo.ru
+RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
