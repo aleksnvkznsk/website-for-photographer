@@ -16,7 +16,7 @@ body {
 
 /* header */
 .header {
-    background: rgba(0, 0, 0, 1);
+    background: rgba(0, 0, 0, 0.5);
     padding-top: 10px;
     position: fixed;
     width: 100%;
@@ -24,6 +24,11 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
+    transition: .1s linear;
+}
+
+.header.hide {
+    transform: translateY(-100px);
 }
 
 .header__sandwich {
@@ -193,6 +198,10 @@ body {
         width: 100%;
         background: none;
         padding: 20px;
+    }
+
+    .header.hide {
+        transform: translateY(0px);
     }
 
     .header__logo {

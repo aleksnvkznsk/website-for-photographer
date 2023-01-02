@@ -39,9 +39,6 @@ function div4() {
     div.style.display = div.style.display == "none" ? "block" : "block";
 }
 
-
-
-
 function toggleMenu() {
     if (document.body.classList.contains('opened')) {
         document.body.classList.remove('opened');
@@ -58,9 +55,25 @@ function init() {
     sandwichEl.addEventListener('click', toggleMenu);
     backdropEl.addEventListener('click', toggleMenu);
     closeEl.addEventListener('click', toggleMenu);
-
 }
 
 document.addEventListener('DOMContentLoaded', init);
 
+let lastScroll = 0;
+const defaultOffset = 100;
+const header = document.querySelector('.header');
+
+const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
+const containHide = () => header.classList.contains('hide');
+
+window.addEventListener('scroll', () => {
+    if(scrollPosition() > lastScroll && !containHide() && scrollPosition() > defaultOffset) {
+        header.classList.add('hide');
+    }
+    else if(scrollPosition() < lastScroll && containHide()){
+        header.classList.remove('hide');
+    }
+
+    lastScroll = scrollPosition();
+})
 
